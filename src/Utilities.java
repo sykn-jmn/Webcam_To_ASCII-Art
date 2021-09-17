@@ -11,7 +11,7 @@ public class Utilities {
     char[] charSet;
     int maxN = 0;
     static final String FULLSET = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.                                                                                                                                                                        ";
-    static final String SHORTSET = "@@@%#*+=--:::.                                       ";
+    static final String SHORTSET = "@@@%#*+=--:::.                                        ";
 
 
 
