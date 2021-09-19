@@ -1,48 +1,32 @@
-# Webcam_To_ASCII-Art
-converts frames from webcam into ASCII characters
 # Webcam To ASCII Art
+Converts Frames from webcam into ASCII Art
+
 **Run Application**
-
 Run the `main` method in the UnoApp class or use the following command in the terminal:
+
 ## Sample Output
+https://user-images.githubusercontent.com/56058545/133916833-e04136be-e261-41a3-b500-f51ff05e4523.mp4
+
+# How It Works
+### Input Frames
+Webcam Capture API from https://github.com/sarxos/webcam-capture was used to get frames from the Webcam in the form of BufferedImages
+
+### Frame Processing
+* Based on the final static variable SIZE, the number of characters for width and height is determined.
+* The character displayed will be determined by the average brightness of the set of pixels which is determined by averaging the red, green, and blue values.
+* The output of this will be a 2d char array.
+
+### Output
+* The 2d char array will then be the input for the display class which utilizes the Java Swing Package for a window display.
 
 
-## Core Domain
+# Class Description
+### `Main`
+  This class contains the `main` method which contains the most basic flow of the program. It also houses the `imageToAscii` method which converts `BufferedImage` to 2D `char` array that contains ASCII characters.
 
-The core game logic is built according to [official uno rules](https://en.wikipedia.org/wiki/Uno_(card_game)#Official_rules).
+### `Display`
+  This is the class responsible for displaying the 2D `char` array into a window.
 
-### Uno Card
-
-Cards are value objects, i.e. immutable. The following card types are available in Uno: 
-* Number Card
-* Skip Action Card
-* Reverse Action Card
-* Draw Two Action Card
-* Wild Color Card
-* Wild Draw Four Card
-
-Initially wild cards don't have a color. When drawn, a new value object is created with the chosen color. 
-
-![card-uml](./doc/cards.png)
-
-### Player
-
-`Player` is an entity which contains a list of hand cards to play.
-
-`PlayerRoundIterator` manages the players and switches turn as if the players are in a round table.
-
-![player-uml](./doc/player.png)
-
-### Game
-
-`Game` is the aggregate which maintains the state of **players**, **draw pile** and **discard pile** as the cards are played. 
-
-![game-uml](./doc/game.png)
-
-### Domain Events
-
-`Game` aggregate produces domain events using `DomainEventPublisher`.
-
-Subscribers can register for these events and handle them accordingly. 
-
-![events-uml](./doc/events.png)
+### `Utilities`
+  This class contains various methods for easy access by the `Main` class and allows the `Main` class to be more organized.
+  The static final `String SHORTSET` and `FULLSET` are two of the common ways to order brightness of ASCII Characters.
